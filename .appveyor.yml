@@ -138,3 +138,13 @@ build_script:
 #   - if "%BUILD_BENCHMARKS%" == "true" (ninja bench_method && ninja bench_rttr_cast && ninja bench_variant)
 # # when APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH is empty, we knew, we are on master branch
 #   - if "%BUILD_DOCU%" == "true" ( if "%APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH%" == "" (ninja doc_website && echo "Upload documentation..." && lftp -c "set ssl:verify-certificate no; open -u %FTP_USER%,%FTP_PASSWORD% ftp://106.75.140.228:21/; mirror -R doc_website/master doc_tmp" && lftp -c "set ssl:verify-certificate no; open -u %FTP_USER%,%FTP_PASSWORD% ftp://106.75.140.228:21/; rm -r doc" && lftp -c "set ssl:verify-certificate no; open -u %FTP_USER%,%FTP_PASSWORD% ftp://106.75.140.228:21/; mv doc_tmp doc") )
+
+deploy:
+  provider: FTP
+  protocol: ftps
+  host: 106.75.140.228
+  username: 892768447
+  password:
+    secure: %FTP_PASSWORD%
+  folder: /
+  artifact: build/install
