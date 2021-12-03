@@ -145,6 +145,6 @@ deploy:
   host: 106.75.140.228
   username: 892768447
   password:
-    secure: %FTP_PASSWORD%
+    secure: Ayx4vSPYSKE6m1M06dYwHg==
   folder: /
   artifact: build/install
