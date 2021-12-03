@@ -132,6 +132,7 @@ build_script:
   - cmake .. -G "Ninja" -DCMAKE_BUILD_TYPE=Debug -DBUILD_RTTR_DYNAMIC=OFF -DBUILD_UNIT_TESTS=OFF -DBUILD_STATIC=ON -DBUILD_WITH_STATIC_RUNTIME_LIBS=OFF -DBUILD_WITH_RTTI=ON -DBUILD_BENCHMARKS=OFF -DBUILD_EXAMPLES=OFF -DBUILD_DOCUMENTATION=OFF -DBUILD_INSTALLER=ON -DBUILD_PACKAGE=ON -DUSE_PCH=OFF -DCUSTOM_DOXYGEN_STYLE=OFF -DBUILD_WEBSITE_DOCU=OFF-DCUSTOM_DOXYGEN_STYLE=OFF
   - ninja
   - cmake --build . --config Debug --target install -j 10
+  - 7z a C:\projects\rttr\dist.zip C:\projects\rttr\build\install\*
 #   - if "%FTP_UPLOAD%" == "true" ( lftp -c "set ssl:verify-certificate no; open -u %FTP_USER%,%FTP_PASSWORD% ftp://106.75.140.228:21/; mirror -R install rttr" )
 #   - if "%TESTS_ONLY%" == "true" (ninja run_tests)
 #   - if "%BUILD_EXAMPLES%" == "true" (ninja json_example && ninja library_loader_example)
@@ -148,3 +149,11 @@ deploy:
     secure: Ayx4vSPYSKE6m1M06dYwHg==
   folder: /
   artifact: build/install/*
+
+artifacts:
+  - path: C:\projects\rttr\build
+    name: build
+    type: zip
+
+  - path: C:\projects\rttr\dist.zip
+    name: dist
