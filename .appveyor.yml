@@ -151,9 +151,9 @@ deploy:
   artifact: build/install/*
 
 artifacts:
-  - path: C:\projects\rttr\build
+  - path: build
     name: build
     type: zip
 
-  - path: C:\projects\rttr\dist.zip
+  - path: dist.zip
     name: dist
